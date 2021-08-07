@@ -1,0 +1,9 @@
+{
+    "auto-close-tag.fullMode": true,
+    "auto-close-tag.insertSpaceBeforeSelfClosingTag": true,
+    "html.format.endWithNewline": true,
+    "html.format.indentHandlebars": true,
+    "html.format.templating": true,
+    "html-to-css-autocompletion.autocompletionFilesScope": "workspace",
+    "html-css-class-completion.enableEmmetSupport": true
+}
