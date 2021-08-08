@@ -22,6 +22,7 @@ class BackPropertyController extends AbstractController
     {
         $this->repository = $repository;
         $this->manager = $manager;
+        Request::enableHttpMethodParameterOverride();
     }
 
     /**
@@ -52,6 +53,7 @@ class BackPropertyController extends AbstractController
 
             $this->manager->persist($property);
             $this->manager->flush();
+            $this->addFlash('success', 'Bien crée avec succès');
             return $this->redirectToRoute('admin.property.index');
         }
             return $this->render('admin/property/new.html.twig', [
@@ -61,7 +63,7 @@ class BackPropertyController extends AbstractController
     }
 
     /**
-     * @Route("/admin/property/{id}", name="admin.property.edit", methods={"GET"})
+     * @Route("/admin/property/{id}", name="admin.property.edit")
      */
     public function edit(Property $property,Request $request)
     {
@@ -71,6 +73,7 @@ class BackPropertyController extends AbstractController
         if ($form->isSubmitted()&& $form->isValid())
         {
             $this->manager->flush();
+            $this->addFlash('success', 'Bien modifié avec succès');
             return $this->redirectToRoute('admin.property.index');
         }
             return $this->render('admin/property/edit.html.twig', [
@@ -80,14 +83,15 @@ class BackPropertyController extends AbstractController
     }
 
     /**
-     * @Route("/admin/property/{id}", name="admin.property.delete", methods={"DELETE","POST"})
+     * 
+     * @Route("/admin/property/delete/{id}", name="admin.property.delete")
      */
     public function delete(Property $property,Request $request)
-    {
-        if ($this->isCsrfTokenValid('delete'.$property->getId(),$request->get('_token'))){
+    {   dump($property->getId());
+         if ($this->isCsrfTokenValid('delete'.$property->getId(),$request->get('_token'))){
            // $this->manager->remove($property);
            // $this->manager->flush();
-           return new Response('Suppression');
+           $this->addFlash('success', 'Bien supprimé avec succès');
         }
             
         return $this->redirectToRoute('admin.property.index');
