@@ -2,6 +2,7 @@
 
 namespace App\Controller\Backend;
 
+use App\Entity\Option;
 use App\Entity\Property;
 use App\Form\PropertyType;
 use App\Repository\PropertyRepository;
@@ -43,7 +44,6 @@ class BackPropertyController extends AbstractController
     public function new(Request $request)
     {
         $property = new Property;
-
         $form = $this->createForm(PropertyType::class, $property);
         $form->handleRequest($request);
 
@@ -63,7 +63,7 @@ class BackPropertyController extends AbstractController
     }
 
     /**
-     * @Route("/admin/property/{id}", name="admin.property.edit")
+     * @Route("/admin/property/{id}", name="admin.property.edit", methods={"GET","POST"})
      */
     public function edit(Property $property,Request $request)
     {
@@ -72,7 +72,7 @@ class BackPropertyController extends AbstractController
 
         if ($form->isSubmitted()&& $form->isValid())
         {
-            $this->manager->flush();
+             $this->manager->flush();
             $this->addFlash('success', 'Bien modifié avec succès');
             return $this->redirectToRoute('admin.property.index');
         }
@@ -84,14 +84,14 @@ class BackPropertyController extends AbstractController
 
     /**
      * 
-     * @Route("/admin/property/delete/{id}", name="admin.property.delete")
+     * @Route("/admin/property/{id}", name="admin.property.delete", methods={"DELETE"})
      */
     public function delete(Property $property,Request $request)
     {   dump($property->getId());
          if ($this->isCsrfTokenValid('delete'.$property->getId(),$request->get('_token'))){
-           // $this->manager->remove($property);
-           // $this->manager->flush();
-           $this->addFlash('success', 'Bien supprimé avec succès');
+            $this->manager->remove($property);
+            $this->manager->flush();
+            $this->addFlash('success', 'Bien supprimé avec succès');
         }
             
         return $this->redirectToRoute('admin.property.index');
