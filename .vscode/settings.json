@@ -5,5 +5,7 @@
     "html.format.indentHandlebars": true,
     "html.format.templating": true,
     "html-to-css-autocompletion.autocompletionFilesScope": "workspace",
-    "html-css-class-completion.enableEmmetSupport": true
+    "html-css-class-completion.enableEmmetSupport": true,
+    "phpGetterSetter.redirect": true,
+    "phpGetterSetter.short": true
 }

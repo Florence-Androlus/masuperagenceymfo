@@ -1,0 +1,50 @@
+<table>
+ 
+    <tr>
+      <td>
+
+        <mj-text font-size="20px" color="#F45E43" font-family="helvetica">Mon Agence</mj-text>
+
+      </td>
+      
+    </tr>
+        <tr>
+      <td>
+
+        <mj-divider border-color="#F45E43"></mj-divider>
+
+        <mj-text font-size="20px" color="#F45E43" font-family="helvetica"><a href="{{url('property.show',{id:contact.property.id,slug: contact.property.slug})}}">{{contact.property.title}}</a> </mj-text>
+
+      </td>
+      
+    </tr>
+            <tr>
+      <td>
+
+       <mj-text font-size="20px" color="#F45E43" font-family="helvetica">Prénon : {{contact.firstname}}</mj-text>
+            
+                  </td>
+      
+    </tr>
+    <tr>
+      <td>       <mj-text font-size="20px" color="#F45E43" font-family="helvetica">Nom : {{contact.lastname}}</mj-text>
+                  </td>
+      
+    </tr>
+    <tr>
+      <td>       <mj-text font-size="20px" color="#F45E43" font-family="helvetica">Téléphone : {{contact.phone}}</mj-text>
+                  </td>
+      
+    </tr>
+     <tr>
+      <td>      <mj-text font-size="20px" color="#F45E43" font-family="helvetica">Email : {{contact.email}}</mj-text>
+                  </td>
+      
+    </tr>
+    <tr>
+      <td>       <mj-text font-size="20px" color="#F45E43" font-family="helvetica">Message : {{contact.message | nl2br}}</mj-text>
+      </td>
+      
+    </tr>
+  </mj-body>
+</table>
