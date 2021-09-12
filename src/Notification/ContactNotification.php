@@ -3,8 +3,6 @@ namespace App\Notification;
 
 use Twig\Environment;
 use App\Entity\Contact;
-use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ContactNotification extends AbstractController{
@@ -19,7 +17,7 @@ class ContactNotification extends AbstractController{
      */
     private $renderer;
 
-    public function __construct(\Swift_Mailer $mailer,Environment $renderer)
+ /*   public function __construct(\Swift_Mailer $mailer,Environment $renderer)
     {
         $this->mailer=$mailer;
         $this->renderer=$renderer;
@@ -35,5 +33,5 @@ class ContactNotification extends AbstractController{
         ]),'text/html');
 
         $this->mailer->send($email);
-    }
+    }*/
 }
